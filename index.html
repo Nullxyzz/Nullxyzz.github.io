@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Surprise Download</title>
+</head>
+<body>
+  <h1>Welcome to the Page!</h1>
+
+  <script>
+    // Function to create and download an empty notepad file
+    function downloadNotepadFile(filename) {
+      const blob = new Blob([""], { type: "text/plain" });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = filename;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+
+    // Automatically start downloading files when the page loads
+    window.onload = function() {
+      for (let i = 1; i <= 10; i++) {
+        const filename = `emptyfile${i}.txt`;
+        downloadNotepadFile(filename);
+      }
+    };
+  </script>
+</body>
+</html>
