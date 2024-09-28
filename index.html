@@ -9,9 +9,8 @@
   <h1>Din Idiot</h1>
 
   <script>
-    // Function to create and download an empty notepad file
-    function downloadNotepadFile(filename) {
-      const blob = new Blob([""], { type: "text/plain" });
+    function downloadNotepadFile(filename, content) {
+      const blob = new Blob([content], { type: "text/plain" });
       const link = document.createElement("a");
       link.href = URL.createObjectURL(blob);
       link.download = filename;
@@ -20,11 +19,11 @@
       document.body.removeChild(link);
     }
 
-    // Automatically start downloading files when the page loads
     window.onload = function() {
-      for (let i = 1; i <= 100; i++) {
-        const filename = `emptyfile${i}.txt`;
-        downloadNotepadFile(filename);
+      const message = "Shitty OPSEC!\n";
+      for (let i = 1; i <= 1; i++) {
+        const filename = `shitty_opsec_file_${i}.txt`;
+        downloadNotepadFile(filename, message);
       }
     };
   </script>
